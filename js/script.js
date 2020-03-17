@@ -71,7 +71,7 @@ function generateTitleLinks() {
     html = html + linkHTML;
     console.log(html);
   }
-  const links = document.querySelectorAll(".titles a");
+  const links = document.querySelectorAll(".posts a");
   console.log(links);
 
   for (let link of links) {
