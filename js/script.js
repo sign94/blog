@@ -44,26 +44,34 @@ function generateTitleLinks() {
     "");
   /* for each article */
   const articles = document.querySelectorAll(".post");
+
+  let html = " ";
+
   for (let article of articles) {
     console.log(article);
+
+    /* get the article id */
+    const articleId = article.getAttribute("id");
+    console.log(articleId);
+    /* find the title element */
+
+    /* get the title from the title element */
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    /* create HTML of the link */
+    const linkHTML =
+      '<li><a href="#' +
+      articleId +
+      '"><span>' +
+      articleTitle +
+      "</span></a></li>";
+    console.log(linkHTML);
+    /* insert link into titleList */
+    article.insertAdjacentHTML("afterend", linkHTML);
+    html = html + linkHTML;
+    console.log(html);
   }
 
-  /* get the article id */
-  const articleId = article.getAttribute("href");
-  console.log(articleId);
-  /* find the title element */
-
-  /* get the title from the title element */
-  const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-  /* create HTML of the link */
-  const linkHTML =
-    '<li><a href="#' +
-    articleId +
-    '"><span>' +
-    articleTitle +
-    "</span></a></li>";
-  console.log(linkHTML);
-  /* insert link into titleList */
+  titleList.innerHTML = html;
 }
 
 generateTitleLinks();
